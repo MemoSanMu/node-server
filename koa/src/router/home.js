@@ -1,9 +1,16 @@
-const koaRouter = require('koa-router')
+const koaRouter = require('koa-router');
 
-const homeRouter = new koaRouter()
+const homeRouter = new koaRouter();
 
-homeRouter.get('/home', (ctx, next) => {
-  ctx.body = 'this is home'
-})
+homeRouter.get('/api/home', (ctx) => {
+  console.log(ctx.request, 'request');
+  ctx.set('Access-Control-Allow-Origin', '*');
+  ctx.body = {
+    code: 0,
+    data: {
+      msg: 'home',
+    },
+  };
+});
 
-module.exports = { homeRouter }
+module.exports = { homeRouter };
